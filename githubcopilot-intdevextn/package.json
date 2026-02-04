@@ -1,0 +1,153 @@
+{
+  "name": "githubcopilot-intdevextn",
+  "displayName": "Professional Extension",
+  "description": "A professional VS Code extension with modern development practices",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "rk-idp",
+          "title": "RK IDP",
+          "icon": "resources/rk-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "rk-idp": [
+        {
+          "id": "rk-idp-main",
+          "name": "RK IDP",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "githubcopilot-intdevextn.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "githubcopilot-intdevextn.openSettings",
+        "title": "RK IDP: Open Settings"
+      }
+    ],
+    "configuration": {
+      "title": "RK IDP",
+      "properties": {
+        "rk-idp.copilot.username": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Copilot username for tracking AI suggestions and chat history"
+        },
+        "rk-idp.github.baseUrl": {
+          "type": "string",
+          "default": "https://github.enterprise.com",
+          "description": "Enterprise GitHub base URL for repository and code review analytics"
+        },
+        "rk-idp.github.userPAT": {
+          "type": "string",
+          "default": "",
+          "description": "Enterprise GitHub Personal Access Token for authentication"
+        },
+        "rk-idp.sonarqube.baseUrl": {
+          "type": "string",
+          "default": "https://sonarqube.enterprise.com",
+          "description": "SonarQube base URL for static code analysis and quality gates"
+        },
+        "rk-idp.checkmarx.tenant": {
+          "type": "string",
+          "default": "",
+          "description": "Checkmarx tenant identifier for security vulnerability scanning"
+        },
+        "rk-idp.checkmarx.baseUrl": {
+          "type": "string",
+          "default": "https://checkmarx.enterprise.com",
+          "description": "Checkmarx base URL for SAST security scanning"
+        },
+        "rk-idp.checkmarx.userApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Checkmarx user API key for authentication"
+        },
+        "rk-idp.appsecjira.username": {
+          "type": "string",
+          "default": "",
+          "description": "AppsecJira username for application security issue tracking"
+        },
+        "rk-idp.appsecjira.baseUrl": {
+          "type": "string",
+          "default": "https://appsec.jira.enterprise.com",
+          "description": "AppsecJira base URL for security issue lifecycle management"
+        },
+        "rk-idp.appsecjira.userPAT": {
+          "type": "string",
+          "default": "",
+          "description": "AppsecJira Personal Access Token for authentication"
+        },
+        "rk-idp.jira.username": {
+          "type": "string",
+          "default": "",
+          "description": "Enterprise JIRA username for sprint and task management"
+        },
+        "rk-idp.jira.userPAT": {
+          "type": "string",
+          "default": "",
+          "description": "Enterprise JIRA Personal Access Token for authentication"
+        },
+        "rk-idp.jira.baseUrl": {
+          "type": "string",
+          "default": "https://jira.enterprise.com",
+          "description": "Enterprise JIRA base URL for agile workflow management"
+        },
+        "rk-idp.dora.githubBaseUrl": {
+          "type": "string",
+          "default": "https://github.enterprise.com",
+          "description": "DevSecOps GitHub base URL for DORA metrics tracking"
+        },
+        "rk-idp.dora.githubUserPAT": {
+          "type": "string",
+          "default": "",
+          "description": "DevSecOps GitHub Personal Access Token for DORA metrics authentication"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@types/sql.js": "^1.4.9",
+    "sql.js": "^1.13.0"
+  }
+}
